@@ -30,6 +30,28 @@
       }, {
         "shape" : "ForbiddenException"
       } ]
+    },
+    "DeleteConnection": {
+      "name": "DeleteConnection",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/@connections/{connectionId}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "DeleteConnectionRequest"
+      },
+      "errors": [
+        {
+          "shape": "GoneException"
+        },
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "ForbiddenException"
+        }
+      ]
     }
   },
   "shapes" : {
@@ -88,6 +110,19 @@
       },
       "required" : [ "ConnectionId", "Data" ],
       "payload" : "Data"
+    },
+    "DeleteConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "ConnectionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "connectionId"
+        }
+      },
+      "required": [
+        "ConnectionId"
+      ]
     },
     "__string" : {
       "type" : "string"
